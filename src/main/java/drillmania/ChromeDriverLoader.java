@@ -5,13 +5,13 @@ import java.io.File;
 import org.apache.commons.lang.SystemUtils;
 
 public class ChromeDriverLoader {
-	public static boolean init() {
+	public static void init() {
 		File driver = getDriverBin();
 		if(driver!=null&&driver.canExecute()) {
 			System.setProperty("webdriver.chrome.driver", driver.getAbsolutePath());
-			return true;
+		}else {
+			throw new RuntimeException("Failed to load Selenium Chrome Driver.");
 		}
-		return false;
 	}
 	
 	private static File getDriverBin() {
