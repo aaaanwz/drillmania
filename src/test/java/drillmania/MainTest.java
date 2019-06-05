@@ -10,7 +10,7 @@ class MainTest {
 	public void checkChromeDriver() throws InterruptedException {
 		ChromeDriverLoader.init();
 		WebDriver driver = new ChromeDriver();
-		driver.get("http://www.google.com");
+		driver.get("https://drillmania.work");
 		Thread.sleep(1000);
 		driver.quit();
 	}
