@@ -19,4 +19,6 @@
 2. `cd drillmania-solver`
 3. `mvn package`
 4. `java -jar ./target/drillmania-solver.jar`
-5. *You can be drillmania.*
+5. *You can be drillmania.*  
+  
+![demo](https://github.com/aaaanwz/drillmania-solver/blob/gif/demo.gif)
