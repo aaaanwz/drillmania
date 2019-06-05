@@ -15,7 +15,8 @@ public class Main {
   public static void main(String[] args) throws Exception {
     try (DrillManiaOperator oper = new DrillManiaOperator()) {
       while (!oper.isStarted()) {
-        // Wait for initial countdown.
+        // Wait for initial countdown
+        Thread.sleep(1);
       }
 
       // Determine drill or not during playtime.
@@ -23,7 +24,7 @@ public class Main {
         Boolean isDrill = oper.isDrill();
         oper.sendResult(isDrill);
       }
-      Thread.sleep(10000); // Show your score!
+      Thread.sleep(5000); // Show your score!
     }
   }
 }
