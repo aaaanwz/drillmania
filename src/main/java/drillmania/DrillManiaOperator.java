@@ -31,7 +31,9 @@ public class DrillManiaOperator implements AutoCloseable {
    * @return true if the game is started
    */
   public boolean isStarted() {
-    return driver.findElement(By.className("start-count")).getAttribute("style")
+    return driver
+        .findElement(By.className("start-count"))
+        .getAttribute("style")
         .equals("display: none;");
   }
 
@@ -55,14 +57,18 @@ public class DrillManiaOperator implements AutoCloseable {
    * @throws InterruptedException
    */
   public Boolean isDrill() throws MalformedURLException, InterruptedException {
-    return driver.findElements(By.className("black")).stream()
-        .filter(e -> !e.getAttribute("style").equals("display: none;")).map(e -> {
+    return driver
+        .findElements(By.className("black"))
+        .stream()
+        .filter(e -> !e.getAttribute("style")
+        .equals("display: none;")).map(e -> {
           try {
             return new URL(e.getAttribute("src")).getPath();
           } catch (MalformedURLException ex) {
             throw new RuntimeException(ex);
           }
-        }).map(e -> drillPictureMap.get(e)).findAny().orElse(null);
+        })
+        .map(e -> drillPictureMap.get(e)).findAny().orElse(null);
   }
 
   final static Map<String, Boolean> drillPictureMap = new HashMap<String, Boolean>();
