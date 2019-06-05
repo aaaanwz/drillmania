@@ -9,11 +9,14 @@
 
 ### Requirement
 - Mac OSX or Windows 10 or Linux (Tested only on OSX)
+- git
 - OpenJDK 11
 - Maven 3.6
 - Google Chrome latest version
 
 ### Launch
-1. `mvn package`
-2. `java -jar ./target/drillmania-solver.jar`
-3. *You can be drillmania.*
+1. `git clone git@github.com:aaaanwz/drillmania-solver.git`
+2. `cd drillmania-solver`
+3. `mvn package`
+4. `java -jar ./target/drillmania-solver.jar`
+5. *You can be drillmania.*
