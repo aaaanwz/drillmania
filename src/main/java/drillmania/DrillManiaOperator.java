@@ -4,17 +4,23 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+/**
+ * 
+ * @author aaaanwz
+ *
+ */
 public class DrillManiaOperator implements AutoCloseable {
   private WebDriver driver;
-  final int retryNum = 100;
 
+  /**
+   * Launch Chrome and connect to drillmania.
+   */
   public DrillManiaOperator() {
     ChromeDriverLoader.init();
     this.driver = new ChromeDriver();
@@ -49,19 +55,14 @@ public class DrillManiaOperator implements AutoCloseable {
    * @throws InterruptedException
    */
   public Boolean isDrill() throws MalformedURLException, InterruptedException {
-    return driver.findElements(By.className("black"))
-        .stream()
-        .filter(e -> !e.getAttribute("style").equals("display: none;"))
-        .map(e -> {
+    return driver.findElements(By.className("black")).stream()
+        .filter(e -> !e.getAttribute("style").equals("display: none;")).map(e -> {
           try {
             return new URL(e.getAttribute("src")).getPath();
           } catch (MalformedURLException ex) {
             throw new RuntimeException(ex);
           }
-        })
-        .map(e -> drillPictureMap.get(e))
-        .findAny()
-        .orElse(null);
+        }).map(e -> drillPictureMap.get(e)).findAny().orElse(null);
   }
 
   final static Map<String, Boolean> drillPictureMap = new HashMap<String, Boolean>();
@@ -94,6 +95,9 @@ public class DrillManiaOperator implements AutoCloseable {
     }
   }
 
+  /**
+   * Disconnect from drillmania.
+   */
   @Override
   public void close() throws Exception {
     driver.quit();
