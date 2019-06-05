@@ -1,9 +1,7 @@
-package drillmania;
+package core;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -24,7 +22,7 @@ public class DrillManiaOperator implements AutoCloseable {
   public DrillManiaOperator() {
     ChromeDriverLoader.init();
     this.driver = new ChromeDriver();
-    driver.get("https://drillmania.work");
+    driver.get(Constants.url);
   }
 
   /**
@@ -68,16 +66,12 @@ public class DrillManiaOperator implements AutoCloseable {
             throw new RuntimeException(ex);
           }
         })
-        .map(e -> drillPictureMap.get(e)).findAny().orElse(null);
+        .map(e -> Constants.drillPictureMap.get(e))
+        .findAny()
+        .orElse(null);
   }
 
-  final static Map<String, Boolean> drillPictureMap = new HashMap<String, Boolean>();
-  static {
-    drillPictureMap.put("/_nuxt/img/a565676.png", true);// REALDRILL
-    drillPictureMap.put("/_nuxt/img/cdc53ee.png", true);// ANIMEDRILL
-    drillPictureMap.put("/_nuxt/img/87ce995.png", false);// TAKENOKO
-    drillPictureMap.put("/_nuxt/img/60911dc.png", false);// ASPARAGUS
-  }
+
 
   /**
    * Click YES/NO button.

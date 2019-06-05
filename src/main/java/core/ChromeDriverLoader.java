@@ -1,4 +1,4 @@
-package drillmania;
+package core;
 
 import java.io.File;
 import org.apache.commons.lang.SystemUtils;

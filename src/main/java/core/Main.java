@@ -1,4 +1,4 @@
-package drillmania;
+package core;
 
 /**
  * 

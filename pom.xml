@@ -53,7 +53,7 @@
 					<appendAssemblyId>false</appendAssemblyId>
 					<archive>
 						<manifest>
-							<mainClass>drillmania.Main</mainClass>
+							<mainClass>core.Main</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
