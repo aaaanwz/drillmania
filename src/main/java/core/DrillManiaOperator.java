@@ -58,8 +58,8 @@ public class DrillManiaOperator implements AutoCloseable {
     return driver
         .findElements(By.className("black"))
         .stream()
-        .filter(e -> !e.getAttribute("style")
-        .equals("display: none;")).map(e -> {
+        .filter(e -> !e.getAttribute("style").equals("display: none;"))
+        .map(e -> {
           try {
             return new URL(e.getAttribute("src")).getPath();
           } catch (MalformedURLException ex) {
